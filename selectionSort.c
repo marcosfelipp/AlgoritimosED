@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 /*
-Selecionar o menor valor do vetor e coloca-lo na posicao i. 
+Selecionar o menor valor do vetor e coloca-lo na posicao i.
+Bom porque tem pouca movimentação de valores - ideal para dados muito grandes
 NÂO ESTAVEL -> Troca posições de mesmo valor
 NÂO ADAPTATIVO -> Não depende do grau de ordenação prévia
 */
@@ -16,7 +17,12 @@ void main(){
 				posicaoMenor = j;
 			}
 		}
-		//Troca
+		// Verificação para não trocar dados da mesma posição:
+		if(posicaoMenor != i){
+			int temp = vetor[i];
+			vetor[i] = vetor[posicaoMenor];
+			vetor[posicaoMenor] = temp;
+		}
 	}
 
 	for(int i = 0; i < n; i++){
